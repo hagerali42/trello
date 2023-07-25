@@ -59,7 +59,7 @@ export const deleteSoft =asyncHandler(
     
     }
 )
-//7-logout
+//7-logoutttt
 export const logout = asyncHandler(
     async (req, res, next) => {
     const user = req.user;
