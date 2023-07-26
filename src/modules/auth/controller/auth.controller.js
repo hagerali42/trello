@@ -309,9 +309,9 @@ export const login = asyncHandler(
         if (!user) {
             return next(new Error("In-valid email",{cause:400}))
         }
-        if(user.confirmEmail==false){
-            return next(new Error("you must confirm email ", { cause: 400 }));
-           }
+        // if(user.confirmEmail==false){
+        //     return next(new Error("you must confirm email ", { cause: 400 }));
+        //    }
         const match = bcrypt.compareSync(password, user.password)
         if (!match) {
             return  next(new Error("In-valid login data",{cause:400}))
