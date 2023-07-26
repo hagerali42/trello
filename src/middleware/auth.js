@@ -24,10 +24,14 @@ export const auth = async (req, res, next) => {
    if (!user) {
      return next(new Error("User not found", { cause: 400 }));
    }
-   if(user.isLoggedIn==false || user.isDeleated==true){
+   if(user.isLoggedIn==false || user.isDeleated==true ){
       return next(new Error("User is not logged in or has been deleted", { cause: 400 }));
      }
+     if(user.confirmEmail==false){
+      return next(new Error("you must confirm email ", { cause: 400 }));
+     }
    user.isLoggedIn = true;
+   user.confirmEmail=true;
    await user.save();
  
    req.user = user;
