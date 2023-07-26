@@ -161,6 +161,7 @@ export const signup = asyncHandler(
 export const confirmEmail=asyncHandler(
  async(req, res, next) =>{
     const {token} = req.params
+    
     // console.log({token});
     const decoded=jwt.verify(token,process.env.EMAIL_SIGNATURE)
     // console.log({decoded});
@@ -304,11 +305,13 @@ export const unsubscribe =asyncHandler(
 export const login = asyncHandler(
     async (req, res, next) => {
         const { email, password } = req.body
-
         const user = await userModel.findOne({ email })
         if (!user) {
             return next(new Error("In-valid email",{cause:400}))
         }
+        if(user.confirmEmail==false){
+            return next(new Error("you must confirm email ", { cause: 400 }));
+           }
         const match = bcrypt.compareSync(password, user.password)
         if (!match) {
             return  next(new Error("In-valid login data",{cause:400}))
