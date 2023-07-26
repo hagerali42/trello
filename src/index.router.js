@@ -11,7 +11,6 @@ const bootstrap =(app,express)=>{
     app.use('/auth', authRouter)
     app.use('/task', taskRouter)
     app.use('/user', userRouter)
-    
     app.use("*", (req, res, next) => {
         return res.json({ message: "In-valid Routing" })
     })
