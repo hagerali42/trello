@@ -27,6 +27,8 @@ router.get('/taskEmployee',auth, taskController.getAllAssigntome )
 // 7-Get all tasks that are not done after deadline
 router.get('/lateTasks',auth, taskController.lateTasks )
 
+router.get('/CompleteTasks', taskController.getAllTaskComplete )
+
 //8- Get all tasks that are not done after deadline (employee)
 router.get('/lateTasks/employee',auth, taskController.lateTasksEmployee )
 
