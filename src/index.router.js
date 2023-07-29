@@ -1,9 +1,11 @@
 import connectDB from "../DB/DBconection.js"
+import cors from 'cors'
 import userRouter from './modules/User/user.router.js'
 import authRouter from './modules/auth/auth.router.js'
 import taskRouter from './modules/Taskes/task.router.js'
 import { globalErrorHandler } from "./utils/errorHandling.js"
 const bootstrap =(app,express)=>{
+    app.use(cors())
     app.use(express.json())
 
 
