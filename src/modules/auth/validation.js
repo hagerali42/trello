@@ -8,7 +8,8 @@ export const signup =Joi.object({
     cPassword: Joi.string().valid(Joi.ref("password")).required(),
     phone: Joi.string().pattern(new RegExp(/^01[0125][0-9]{8}$/)),
     gender: Joi.string().required(),
-    age: Joi.number().min(10).max(100).integer().positive(),    
+    age: Joi.number().min(10).max(100).integer().positive(),  
+    isAdmin:Joi.boolean()  
 }).required()
 
 export const login =Joi.object({
