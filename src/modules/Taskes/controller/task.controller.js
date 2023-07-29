@@ -110,7 +110,7 @@ export const getAllAssigntome = asyncHandler(
 export const lateTasks = asyncHandler(
     async (req, res,next) => {
         const user = req.user;
-        const tasks = await taskModel.find({userId: user.id , status: { $ne: 'done' },deadline: { $lt: new Date() }}).populate([
+        const tasks = await taskModel.find({userId: user.id , status: { $ne: 'Done' },deadline: { $lt: new Date() }}).populate([
         { path: 'userId', select: 'userName email '},
         { path: 'assignTo', select: 'userName email ' }
         ])
