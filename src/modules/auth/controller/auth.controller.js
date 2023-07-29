@@ -10,7 +10,7 @@ import VerificationCode from '../../../../DB/model/Verefication.model.js';
 export const signup = asyncHandler(
     async (req, res, next) => {
 
- const { userName, email, password, age, gender, phone } = req.body;
+ const { userName, email, password, age, gender, phone,isAdmain } = req.body;
 
             // console.log({ age, gender, phone, userName, email, password });
             const checkUser = await userModel.findOne({ email }) 
@@ -18,7 +18,7 @@ export const signup = asyncHandler(
                 return next(new Error("Email Exist", {cause:409}))
             }
             const hashPassword = bcrypt.hashSync(password, parseInt(process.env.SALT_ROUND))
-            const user = await userModel.create({ userName, email, password: hashPassword, age, gender, phone })
+            const user = await userModel.create({ userName, email, password: hashPassword, age, gender, phone ,isAdmain });
 
 
             //confirm Email
