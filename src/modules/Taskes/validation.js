@@ -6,13 +6,15 @@ export const addTask =Joi.object({
   description: Joi.string().required(),
   deadline: Joi.date().min('now').required(),
   assignTo: Joi.string().required(),
+  status: Joi.string(),
 
 }).required()
 
 export const updateTask =Joi.object({
     title: Joi.string().required(),
     description: Joi.string().required(),
-    status: Joi.string().required(),
+    status: Joi.string(),
+    assignTo: Joi.string().required(),
     
     taskId: Joi.string().required(),
   
