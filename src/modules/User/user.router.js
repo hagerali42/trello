@@ -15,6 +15,9 @@ router.put('/',validation(validator.update), [ auth,admain] ,userController.upda
 // 5-delete user(user must be logged in)
 router.delete('/',[ auth,admain] ,userController.deleteUser )
 
+router.get('/users',[ auth,admain] ,userController.getAlluserass )
+
+
 // 6-soft delete(user must be logged in)
 router.patch('/soft-delete', [ auth,admain] ,userController.deleteSoft )
 
