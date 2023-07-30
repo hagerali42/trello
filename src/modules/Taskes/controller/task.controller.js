@@ -119,7 +119,7 @@ export const getAllAssigntome = asyncHandler(
 export const lateTasks = asyncHandler(
     async (req, res,next) => {
         const user = req.user;
-        const tasks = await taskModel.find({userId: user.id , status: { $ne: 'Done' },deadline: { $lt: new Date() }}).populate([
+        const tasks = await taskModel.find({userId: user.id , status: { $ne: 'done' },deadline: { $lt: new Date() }}).populate([
         { path: 'userId', select: 'userName email '},
         { path: 'assignTo', select: 'userName email ' }
         ])
@@ -132,7 +132,7 @@ export const lateTasks = asyncHandler(
 export const lateTasksEmployee = asyncHandler(
     async (req, res,next) => {
         const user = req.user;
-        const tasks = await taskModel.find({assignTo: user.id , status: { $ne: 'Done' },deadline: { $lt: new Date() }}).populate([
+        const tasks = await taskModel.find({assignTo: user.id , status: { $ne: 'done' },deadline: { $lt: new Date() }}).populate([
         { path: 'userId', select: 'userName email '},
         { path: 'assignTo', select: 'userName email ' }
         ])
@@ -147,7 +147,7 @@ export const lateTasksEmployee = asyncHandler(
 )
 export const getAllTaskComplete = asyncHandler(
     async (req, res,next) => {
-        const tasks = await taskModel.find({status:"Done"}).populate([
+        const tasks = await taskModel.find({status:"done"}).populate([
         { path: 'userId', select: 'userName email'},
         { path: 'assignTo', select: 'userName email' }
         ])
