@@ -17,6 +17,8 @@ router.delete('/:taskId',validation(validator.deleteTask), [ auth,admain] , task
 // 4-get all tasks with user data  التسكات الي المدير عملها
 router.get('/', taskController.getAllTask )
 
+router.get('/oneTask/:id', taskController.oneTask )
+
 
 // 5-Get tasks of one user with user data  (manger)التسكات الي المدير عملها
 router.get('/taskAdmain', [ auth,admain] , taskController.getAllCreatedTask )

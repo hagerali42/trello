@@ -73,7 +73,16 @@ export const getAllTask = asyncHandler(
         return  res.status(201).json({ message :'Done',tasks});
     }
 )
-
+export const oneTask = asyncHandler(
+    async (req, res,next) => {
+        const{id}=req.params
+        const tasks = await taskModel.findById(id).populate([
+        { path: 'userId', select: 'userName email'},
+        { path: 'assignTo', select: 'userName email' }
+        ])
+        return  res.status(201).json({ message :'Done',tasks});
+    }
+)
 
 
 // 5-Get tasks of one user with user data  التسكات الي المدير عملها
