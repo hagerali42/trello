@@ -68,13 +68,13 @@ export const deleteSoft =asyncHandler(
     }
 )
 
-//8-profile picture
-export const profilePicture=asyncHandler(
-    async(req, res, next)=>{
-        return res.json({ message:"Done",file:req.file})
-    }
+// //8-profile picture
+// export const profilePicture=asyncHandler(
+//     async(req, res, next)=>{
+//         return res.json({ message:"Done",file:req.file})
+//     }
 
-)
+// )
 
 //7-logoutttt
 export const logout = asyncHandler(

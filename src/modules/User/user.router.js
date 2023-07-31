@@ -32,10 +32,10 @@ router.patch('/soft-delete',
 [ auth,admain] ,
 userController.deleteSoft )
 
-//8-uploade profile Picture
-router.post('/users/profilePic',auth,
-upload().single('profilePic'),
-userController.profilePicture )
+// //8-uploade profile Picture
+// router.post('/users/profilePic',auth,
+// upload().single('profilePic'),
+// userController.profilePicture )
 
 
 // 7-logout
