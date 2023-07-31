@@ -5,7 +5,6 @@ import * as userController from './controller/user.controller.js'
 import { Router } from "express";
 import { validation } from '../../middleware/validation.js';
 import * as validator from './validation.js';
-import { upload } from '../../utils/multer.js';
 const router = Router()
 // 3-change password (user must be logged in)
 router.patch('/change-password',
