@@ -126,6 +126,6 @@ export const logout = asyncHandler(
 )
   export const getUsr = asyncHandler(async (req, res, next) => {
     const user = req.user; //from middleware  
-    const finduser = await userModel.findById(user.id,);
+    const finduser = await userModel.findById(user.id);
     return res.json({ message: "Done", result: finduser });
   });
