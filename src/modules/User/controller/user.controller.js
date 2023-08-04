@@ -55,6 +55,14 @@ export const getAlluserass =asyncHandler(
     
     }
 )
+export const getprofile =asyncHandler(
+    async(req, res, next) => {
+        const user = req.user; //FROM auth middleware
+        const users=await userModel.find();
+        return res.status(200).json({ message: 'Done' ,users});
+    
+    }
+)
 // 6-soft delete(user must be logged in)
 export const deleteSoft =asyncHandler(
 
@@ -94,4 +102,23 @@ export const logout = asyncHandler(
     await user.save();
   
     return res.status(200).json({ message: "Logged Out!" });
+  });
+
+  
+  export const profilePicture = asyncHandler(async (req, res, next) => {
+    const user = req.user; //from middleware
+    //1-upload profile picture to cloudinery
+    const { secure_url, public_id } = await cloudinary.uploader.upload(
+      req.file.path,
+      { folder: `users/${user.id}/profilePicture` }
+    );
+  
+    //2-save file path in database
+    const finduser = await userModel.findByIdAndUpdate(
+      user.id,
+      { profilePicture: { secure_url, public_id } },
+      { new: true }
+    );
+  
+    return res.json({ message: "Done", result: finduser });
   });

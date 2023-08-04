@@ -36,11 +36,14 @@ userController.deleteSoft )
 // upload().single('profilePic'),
 // userController.profilePicture )
 
-
 // 7-logout
 router.patch('/logout',
 auth ,userController.logout )
 
+//8-profile
+router.post('/profilePic',auth,
+cloudinaryUpload().single('profilePic'),
+userController.profilePicture )
 
 
 

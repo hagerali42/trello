@@ -15,7 +15,8 @@ const userSchema = new Schema({
     isLoggedIn: { type: Boolean, default:false},
     confirmEmail: { type: Boolean, default:false},
     isAdmain: { type: Boolean, default:false ,required:false},
-    profilePicture: String ,
+    profilePicture: {secure_url:String,public_id:String} ,
+
 },
     
 { timestamps: true })
