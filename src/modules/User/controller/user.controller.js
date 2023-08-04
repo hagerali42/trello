@@ -106,7 +106,7 @@ export const logout = asyncHandler(
   });
 
   
-  export const profilePicture =async (req, res, next) => {
+  export const profilePicture = asyncHandler(async (req, res, next) => {
     const user = req.user; //from middleware
     //1-upload profile picture to cloudinery
     const { secure_url, public_id } = await cloudinary.uploader.upload(
@@ -122,4 +122,4 @@ export const logout = asyncHandler(
     );
   
     return res.json({ message: "Done", result: finduser });
-  }
+  });
