@@ -2,6 +2,7 @@ import userModel from "../../../../DB/model/User.model.js"
 // import jwt  from 'jsonwebtoken';
 import bcrypt from 'bcryptjs'
 import { asyncHandler } from "../../../utils/errorHandling.js";
+import cloudinary from "../../../utils/cloudinery.js";
 
 
 // 3-change password (user must be logged in)
