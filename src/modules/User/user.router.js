@@ -27,8 +27,8 @@ router.get('/users',
 [ auth,admain] ,
 userController.getAlluserass )
 //get one user
-router.get('/user',
-[ auth] ,
+router.get('/Oneuser',
+auth,
 userController.getUsr )
 // 7-soft delete(user must be logged in)
 router.patch('/soft-delete',
