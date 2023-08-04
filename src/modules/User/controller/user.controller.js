@@ -48,14 +48,7 @@ export const deleteUser =asyncHandler(
     
     }
 )
-export const getAlluserass =asyncHandler(
-    async(req, res, next) => {
-        const user = req.user; //FROM auth middleware
-        const users=await userModel.find();
-        return res.status(200).json({ message: 'Done' ,users});
-    
-    }
-)
+
 // export const getprofile =asyncHandler(
 //     async(req, res, next) => {
 //         const user = req.user; //FROM auth middleware
@@ -121,5 +114,18 @@ export const logout = asyncHandler(
       { new: true }
     );
   
+    return res.json({ message: "Done", result: finduser });
+  });
+  export const getAlluserass =asyncHandler(
+    async(req, res, next) => {
+        const user = req.user; //FROM auth middleware
+        const users=await userModel.find();
+        return res.status(200).json({ message: 'Done' ,users});
+    
+    }
+)
+  export const getUsr = asyncHandler(async (req, res, next) => {
+    const user = req.user; //from middleware  
+    const finduser = await userModel.findById(user.id,);
     return res.json({ message: "Done", result: finduser });
   });
