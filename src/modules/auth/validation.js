@@ -9,7 +9,7 @@ export const signup =Joi.object({
     phone: Joi.string().pattern(new RegExp(/^01[0125][0-9]{8}$/)),
     gender: Joi.string().required(),
     age: Joi.number().min(10).max(100).integer().positive(),  
-    isAdmain:Joi.boolean(), 
+    isAdmain:Joi.boolean().optional(), 
 }).required()
 
 export const login =Joi.object({
