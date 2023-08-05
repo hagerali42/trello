@@ -29,18 +29,18 @@ export const updateTask = asyncHandler(
     async (req, res,next) => {
         const user = req.user;   //FROM auth middleware 
         const {taskId} = req.params
-        const { title, description, status } = req.body;
+        const { title, description, status ,assignTo } = req.body;
         const task = await taskModel.findById(taskId);
         if (!task) {
         return next(new Error('Task not found'))
         }
-        if (task.userId !=user.id) {
-            return next(new Error('You are not authorized to update this task'))
-        }
+        // if (task.userId !=user.id) {
+        //     return next(new Error('You are not authorized to update this task'))
+        // }
         if (title) task.title = title;
         if (description) task.description = description;
         if (status) task.status = status;
-    
+        if (assignTo) task.assignTo = assignTo;
         await task.save();
         return  res.status(200).json({ message :'Done ',task });
 
