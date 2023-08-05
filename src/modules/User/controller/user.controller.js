@@ -24,11 +24,12 @@ export const changePassword =asyncHandler(
 // 4-update user (age , firstName , lastName)(user must be logged in)
 export const updateUser =asyncHandler(
     async(req, res, next) => {
-        const {userName,age,phone}=req.body
+        const {userName,age,phone,email}=req.body
         const user = req.user;   //FROM auth middleware
         user.age = age;
         user.userName = userName;
         user.phone = phone;
+        user.email = email;
         user.isLoggedIn = true;
         await user.save();
       return res.status(200).json({message: 'user updated', user });
