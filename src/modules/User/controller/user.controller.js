@@ -26,10 +26,11 @@ export const updateUser =asyncHandler(
     async(req, res, next) => {
         const {userName,age,phone,email}=req.body
         const user = req.user;   //FROM auth middleware
-        user.age = age;
-        user.userName = userName;
-        user.phone = phone;
-        user.email = email;
+       if(age) user.age = age;
+       if(userName)  user.userName = userName;
+       if(phone) user.phone = phone;
+       if(email) user.email = email;
+
         user.isLoggedIn = true;
         await user.save();
       return res.status(200).json({message: 'user updated', user });

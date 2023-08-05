@@ -8,8 +8,8 @@ export const change_password =Joi.object({
 }).required()
 
 export const update =Joi.object({
-    email: Joi.email().required(),
-    userName: Joi.string().required(),
+    email: Joi.string().email({ minDomainSegments: 2,maxDomainSegments: 3, }),
+    userName: Joi.string(),
     phone: Joi.string().pattern(new RegExp(/^01[0125][0-9]{8}$/)),
     age: Joi.number().min(10).max(100).integer().positive(), 
 }).required()
