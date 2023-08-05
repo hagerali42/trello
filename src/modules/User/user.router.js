@@ -15,7 +15,7 @@ auth ,userController.changePassword )
 // 4-update user (age , firstName , lastName)(user must be logged in)
 router.put('/',
 validation(validator.update),
-[ auth] ,userController.updateUser )
+auth ,userController.updateUser )
 
 // 5-delete user(user must be logged in)
 router.delete('/',
