@@ -22,6 +22,10 @@ router.delete('/',
 [ auth,admain] ,
 userController.deleteUser )
 
+// 6-ADdelete user()
+router.delete('/ADdelet/:id',
+[ auth,admain] ,
+userController.ADdeleteUser )
 //6-get All users
 router.get('/users',
 [ auth,admain] ,

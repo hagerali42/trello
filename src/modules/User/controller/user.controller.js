@@ -41,9 +41,20 @@ export const updateUser =asyncHandler(
 export const deleteUser =asyncHandler(
     async(req, res, next) => {
         const user = req.user; //FROM auth middleware
-
-        console.log(user.id,"dedeedede");
+        
         await userModel.findByIdAndDelete(user.id);
+        user.isDeleated=true;
+        await user.save();
+        return res.status(200).json({ message: 'User deleted' });
+    
+    }
+)
+//admain delet one user
+export const ADdeleteUser =asyncHandler(
+    async(req, res, next) => {
+        const user = req.user; //FROM auth middleware
+        const {id}=req.params
+        await userModel.findByIdAndDelete(id);
         user.isDeleated=true;
         await user.save();
         return res.status(200).json({ message: 'User deleted' });
