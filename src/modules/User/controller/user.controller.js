@@ -54,8 +54,8 @@ export const ADdeleteUser =asyncHandler(
     async(req, res, next) => {
         const user = req.user; //FROM auth middleware
         const {id}=req.params
-        await userModel.findByIdAndDelete(id);
-        user.isDeleated=true;
+        const employyUser=await userModel.findByIdAndDelete(id)
+         employyUser.isDeleated=true;
         await user.save();
         return res.status(200).json({ message: 'User deleted' });
     
